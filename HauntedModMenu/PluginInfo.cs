@@ -6,8 +6,8 @@ namespace HauntedModMenu
 	/// </summary>
 	class PluginInfo
 	{
-		public const string GUID = "com.ahauntedarmy.gorillatag.hauntedmodmenu";
-		public const string Name = "HauntedModMenu";
-		public const string Version = "1.0.1";
+		public const string GUID = "org.kaylie.gtag.hmm-kayliestweaks";
+		public const string Name = "HMM-KayliesTweaks";
+		public const string Version = "1.0.1-KayliesTweaks1.0.0";
 	}
 }
