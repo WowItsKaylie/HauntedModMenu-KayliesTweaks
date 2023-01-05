@@ -34,6 +34,7 @@ namespace HauntedModMenu.Buttons
 				StopCoroutine(timerRoutine);
 		}
 
+		// TODO: Rebind the hand trigger to either a face button or a grip button instead.
 		private void OnTriggerEnter(Collider collider)
 		{
 			if (triggered) 

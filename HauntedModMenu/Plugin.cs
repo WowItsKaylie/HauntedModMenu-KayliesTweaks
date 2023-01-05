@@ -22,6 +22,8 @@ namespace HauntedModMenu
 
 		private void Awake()
 		{
+			// TODO: Export a new Unity bundle with a better font and hook everything up
+			
 			var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("HauntedModMenu.Resources.font");
 			if (stream == null)
 				return;
