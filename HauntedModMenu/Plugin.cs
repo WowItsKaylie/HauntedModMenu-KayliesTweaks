@@ -49,8 +49,8 @@ namespace HauntedModMenu
 					continue;
 
 				if (modDescription.Description.Contains("HauntedModMenu")) {
-					var enableImp = AccessTools.Method(type, "OnEnable");
-					var disableImp = AccessTools.Method(type, "OnDisable");
+                    var enableImp = AccessTools.Method(type, "OnEnable");
+                    var disableImp = AccessTools.Method(type, "OnDisable");
 
 					if(enableImp != null && disableImp != null)
 						Utils.RefCache.ModList.Add(new Utils.ModInfo(modPlugin, plugin.Metadata.Name));

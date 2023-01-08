@@ -8,6 +8,8 @@ namespace HauntedModMenu
 	{
 		public const string GUID = "org.kaylie.gtag.hmm-kayliestweaks";
 		public const string Name = "HMM-KayliesTweaks";
-		public const string Version = "1.0.1-KayliesTweaks1.0.0";
+		// The first 3 numbers are inherited from upstream
+		// the last number is the iteration of KayliesTweaks.
+		public const string Version = "1.0.1.1";
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 
 using UnityEngine;
+using UnityEngine.XR;
 
 namespace HauntedModMenu.Buttons
 {
@@ -35,31 +36,23 @@ namespace HauntedModMenu.Buttons
 		}
 
 		// TODO: Rebind the hand trigger to either a face button or a grip button instead.
-		private void OnTriggerEnter(Collider collider)
+		private void Update()
 		{
-			if (triggered) 
-				return;
-	
-			GorillaTriggerColliderHandIndicator hand = collider.GetComponentInParent<GorillaTriggerColliderHandIndicator>();
-			if (hand == null) 
+			if (triggered)
 				return;
 
-			float lhSpeed = leftHandTracker != null ? leftHandTracker.Speed : 0f;
-			float rhSpeed = rightHandTracker != null ? rightHandTracker.Speed : 0f;
+			bool canTrigger = true;
 
-			bool canTrigger = lhSpeed < handSensitivity && rhSpeed < handSensitivity;
-
-			if (canTrigger && hand.isLeftHand != leftHand) {
+			if (canTrigger)
+			{
 				triggered = true;
-				handCollider = collider;
-
-				GorillaTagger.Instance.StartVibration(hand.isLeftHand, GorillaTagger.Instance.tapHapticStrength / 2f, GorillaTagger.Instance.tapHapticDuration);
-
-				timerRoutine = StartCoroutine(Timer());
-				HandTriggered();
-			}	
+				if (InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.secondaryButton, out bool tButton))
+				{
+					timerRoutine = StartCoroutine(Timer());
+					HandTriggered();
+				}
+			}
 		}
-
 		private IEnumerator Timer()
 		{
 			yield return new WaitForSeconds(1.5f);
