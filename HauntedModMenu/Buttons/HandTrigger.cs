@@ -40,6 +40,7 @@ namespace HMMKayliesTweaks.Buttons
 		 if i have GorillaTriggerColliderHandIndicator hand = collider.GetComponentInParent<GorillaTriggerColliderHandIndicator>(); in fixedupdate the menu doesnt open at all and it throws a NullReferenceException
 		 if i dont it just inverts the status of every mod and breaks the buttons when opened
 		 i think i need to use fixedupdate + easyinput and ontriggerenter in tandem or something idrk that much c#
+		 this is very much wip dont laugh at me if my code sucks which it probably does lol
 		 */
 
 		private void OnTriggerEnter(Collider collider)
