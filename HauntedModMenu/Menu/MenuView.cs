@@ -101,7 +101,7 @@ namespace HauntedModMenu.Menu
 				rect.sizeDelta = new Vector2(1f, 1f);
 			}
 
-			string[,] textInfo = new string[,] { {"MenuTitle", "HMM-KayliesTweaks" }, {"PageText", "Pages" } };
+			string[,] textInfo = new string[,] { {"MenuTitle", "Haunted Mod Menu" }, {"PageText", "Pages" } };
 			Vector3[] positions = new Vector3[] { new Vector3(0f, 0.435f, -0.51f), new Vector3(0f, -0.4f, -0.51f) };
 
 			int loopIndex;

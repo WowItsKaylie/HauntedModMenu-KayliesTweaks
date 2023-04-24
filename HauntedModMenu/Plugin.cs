@@ -22,8 +22,6 @@ namespace HauntedModMenu
 
 		private void Awake()
 		{
-			// TODO: Export a new Unity bundle with a better font and hook everything up
-			
 			var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("HauntedModMenu.Resources.font");
 			if (stream == null)
 				return;
@@ -49,8 +47,8 @@ namespace HauntedModMenu
 					continue;
 
 				if (modDescription.Description.Contains("HauntedModMenu")) {
-                    var enableImp = AccessTools.Method(type, "OnEnable");
-                    var disableImp = AccessTools.Method(type, "OnDisable");
+					var enableImp = AccessTools.Method(type, "OnEnable");
+					var disableImp = AccessTools.Method(type, "OnDisable");
 
 					if(enableImp != null && disableImp != null)
 						Utils.RefCache.ModList.Add(new Utils.ModInfo(modPlugin, plugin.Metadata.Name));

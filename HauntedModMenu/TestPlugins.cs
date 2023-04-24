@@ -3,8 +3,6 @@ using BepInEx;
 using UnityEngine;
 
 namespace HauntedModMenu
-
-// TODO: Look into this. It does nothing, all the code is commented out
 {
 	/*
 	[Description("HauntedModMenu")]
