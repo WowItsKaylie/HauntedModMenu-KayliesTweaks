@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-namespace HauntedModMenu.Utils
+namespace HMMKayliesTweaks.Utils
 {
 	// static class to cache references
 	public static class RefCache

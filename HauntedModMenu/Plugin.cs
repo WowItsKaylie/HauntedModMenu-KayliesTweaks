@@ -10,7 +10,7 @@ using UnityEngine;
 
 using Utilla;
 
-namespace HauntedModMenu
+namespace HMMKayliesTweaks
 {
 	[ModdedGamemode]
 	[BepInDependency("org.legoandmars.gorillatag.utilla", "1.5.0")]
@@ -30,7 +30,7 @@ namespace HauntedModMenu
 			if (fontBundle == null)
 				return;
 
-			Utils.RefCache.CustomFont = fontBundle.LoadAsset<Font>("ShortBaby");
+			Utils.RefCache.CustomFont = fontBundle.LoadAsset<Font>("Monocraft");
 
 			fontBundle.Unload(false);
 		}

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace HauntedModMenu.Utils
+namespace HMMKayliesTweaks.Utils
 {
     // this could be usefull in the future
     public class ObjectTracker : MonoBehaviour

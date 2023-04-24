@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-using HauntedModMenu.Utils;
+using HMMKayliesTweaks.Utils;
 
-namespace HauntedModMenu.Menu
+namespace HMMKayliesTweaks.Menu
 {
 	class MenuController : Buttons.HandTrigger
 	{

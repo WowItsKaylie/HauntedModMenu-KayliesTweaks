@@ -1,6 +1,6 @@
 ﻿using BepInEx;
 
-namespace HauntedModMenu.Utils
+namespace HMMKayliesTweaks.Utils
 {
 	public class ModInfo
 	{

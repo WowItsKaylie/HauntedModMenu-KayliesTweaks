@@ -2,7 +2,7 @@
 using System;
 using System.Reflection;
 
-namespace HauntedModMenu
+namespace HMMKayliesTweaks
 {
 	/// <summary>
 	/// This class handles applying harmony patches to the game.

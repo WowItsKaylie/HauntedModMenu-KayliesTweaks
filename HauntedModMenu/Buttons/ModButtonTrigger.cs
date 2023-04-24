@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace HauntedModMenu.Buttons
+namespace HMMKayliesTweaks.Buttons
 {
 	class ModButtonTrigger : ButtonTrigger
 	{

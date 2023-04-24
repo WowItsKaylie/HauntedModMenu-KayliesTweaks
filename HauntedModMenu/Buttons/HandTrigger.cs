@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 
 using UnityEngine;
+using HoneyLib.Utils;
 
-namespace HauntedModMenu.Buttons
+namespace HMMKayliesTweaks.Buttons
 {
 	internal class HandTrigger : MonoBehaviour
 	{
@@ -34,6 +35,7 @@ namespace HauntedModMenu.Buttons
 				StopCoroutine(timerRoutine);
 		}
 
+		/* original code for tracking the button press or something i think...........,,, sowwy :3
 		private void OnTriggerEnter(Collider collider)
 		{
 			if (triggered) 
@@ -58,10 +60,28 @@ namespace HauntedModMenu.Buttons
 				HandTriggered();
 			}	
 		}
+		*/
+
+		// FIXME: none of the buttons can be pressed and the status of all mods gets inverted every time the menu is opened
+		// i believe this is because we dont have any of the hand collider stuff here anymore but we cant use it since its not referenced at all now that ontriggerenter is no longer used
+		
+		void FixedUpdate()
+        {
+			EasyInput.UpdateInput();
+			if (EasyInput.FaceButtonX)
+            {
+				
+				if (triggered)
+					return;
+				triggered = true;
+				timerRoutine = StartCoroutine(Timer());
+				HandTriggered();
+			}
+        }
 
 		private IEnumerator Timer()
 		{
-			yield return new WaitForSeconds(1.5f);
+			yield return new WaitForSeconds(0.3f);
 			triggered = false;
 			timerRoutine = null;
 		}

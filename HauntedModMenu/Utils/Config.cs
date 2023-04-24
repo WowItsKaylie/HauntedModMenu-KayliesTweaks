@@ -6,7 +6,7 @@ using System.Text;
 using BepInEx;
 using BepInEx.Configuration;
 
-namespace HauntedModMenu.Utils
+namespace HMMKayliesTweaks.Utils
 {
 	internal static class Config
 	{

@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-using HauntedModMenu.Utils;
+using HMMKayliesTweaks.Utils;
 
-namespace HauntedModMenu.Menu
+namespace HMMKayliesTweaks.Menu
 {
 	class MenuView : MonoBehaviour
 	{
-		private static readonly string emptyName = "<------------------>";
+		private static readonly string emptyName = "";
 		private static readonly Color enabledColor = new Color(0.4951f, 0.7075f, 0.3771f, 1f);
 		private static readonly Color disabledColor = new Color(0.8396f, 0.2495f, 0.2495f, 1f);
 
@@ -101,7 +101,7 @@ namespace HauntedModMenu.Menu
 				rect.sizeDelta = new Vector2(1f, 1f);
 			}
 
-			string[,] textInfo = new string[,] { {"MenuTitle", "Haunted Mod Menu" }, {"PageText", "Pages" } };
+			string[,] textInfo = new string[,] { {"MenuTitle", "HMM KayliesTweaks" }, {"PageText", "Pages" } };
 			Vector3[] positions = new Vector3[] { new Vector3(0f, 0.435f, -0.51f), new Vector3(0f, -0.4f, -0.51f) };
 
 			int loopIndex;
@@ -207,7 +207,7 @@ namespace HauntedModMenu.Menu
 				rect.sizeDelta = rectSize;
 
 			if (textUI != null) {
-				textUI.fontSize = fontSize;
+				textUI.fontSize = 30;
 				textUI.fontStyle = FontStyle.Normal;
 				textUI.alignment = TextAnchor.MiddleCenter;
 				textUI.font = RefCache.CustomFont;

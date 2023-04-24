@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HauntedModMenu.Buttons
+namespace HMMKayliesTweaks.Buttons
 {
 	class PageButtonTrigger : ButtonTrigger
 	{

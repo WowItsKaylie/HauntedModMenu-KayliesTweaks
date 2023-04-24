@@ -2,7 +2,7 @@
 using BepInEx;
 using UnityEngine;
 
-namespace HauntedModMenu
+namespace HMMKayliesTweaks
 {
 	/*
 	[Description("HauntedModMenu")]
