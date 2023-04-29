@@ -1,5 +1,5 @@
-# Haunted Mod Menu + Kaylie's Tweaks
-A fork of Haunted Mod Menu with additions for ease of use.
+# Kaylie's Haunted Tweaks
+A fork of Haunted with additions for ease of use.
 
 # Current Tweaks:
 - New font
