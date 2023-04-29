@@ -28,6 +28,9 @@
     <Reference Include="HoneyLib">
       <HintPath>..\..\..\..\..\..\Program Files\Oculus\Software\Software\another-axiom-gorilla-tag\BepInEx\plugins\HoneyLib\HoneyLib.dll</HintPath>
     </Reference>
+    <Reference Include="PhotonUnityNetworking">
+      <HintPath>..\..\..\..\..\..\Program Files\Oculus\Software\Software\another-axiom-gorilla-tag\Gorilla Tag_Data\Managed\PhotonUnityNetworking.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Animation.Rigging">
       <HintPath>..\..\..\..\..\..\Program Files\Oculus\Software\Software\another-axiom-gorilla-tag\Gorilla Tag_Data\Managed\Unity.Animation.Rigging.dll</HintPath>
     </Reference>

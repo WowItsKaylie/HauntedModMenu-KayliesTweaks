@@ -22,7 +22,7 @@ namespace HMMKayliesTweaks
 
 		private void Awake()
 		{
-			var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("HauntedModMenu.Resources.font");
+			var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KayliesHauntedTweaks.Resources.font");
 			if (stream == null)
 				return;
 

@@ -58,6 +58,7 @@ namespace HMMKayliesTweaks.Buttons
 				timerRoutine = StartCoroutine(Timer());
                 
 				GorillaTagger.Instance.StartVibration(hand.isLeftHand, GorillaTagger.Instance.tapHapticStrength / 2f, GorillaTagger.Instance.tapHapticDuration);
+				GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(67, hand.isLeftHand, 0.05f);
 				HandTriggered();
 			}
 		}
