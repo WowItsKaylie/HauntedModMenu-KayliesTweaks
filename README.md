@@ -5,5 +5,5 @@ A fork of Haunted Mod Menu with additions for ease of use.
 - New font
 - Header text changed
 - Placeholder text cleared
-- Facebutton to open instead of tapping palm (WIP)
+- Facebutton to open instead of tapping palm
 - More soon probably :tm:
