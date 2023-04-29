@@ -10,7 +10,7 @@ namespace HMMKayliesTweaks.Utils
 {
 	internal static class Config
 	{
-		public static ConfigFile File { get; private set; } = new ConfigFile(Path.Combine(Paths.ConfigPath, "HauntedModMenu.cfg"), true);
+		public static ConfigFile File { get; private set; } = new ConfigFile(Path.Combine(Paths.ConfigPath, "HMMKayliesTweaks.cfg"), true);
 
 		public static T LoadData<T>(string tag, string key, string description, T defaultValue)
 		{

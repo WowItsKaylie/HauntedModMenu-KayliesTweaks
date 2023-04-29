@@ -161,8 +161,8 @@ namespace HMMKayliesTweaks.Menu
 			SetParent();
 		}
 
-		protected override void HandTriggered()
-		{
+		protected override void OpenMenu()
+        {
 			if (menu == null)
 				return;
 

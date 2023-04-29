@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-
 using UnityEngine;
 using HoneyLib.Utils;
 
@@ -15,7 +14,9 @@ namespace HMMKayliesTweaks.Buttons
 		protected static Utils.ObjectTracker leftHandTracker = null;
 		protected static Utils.ObjectTracker rightHandTracker = null;
 
+
 		private Coroutine timerRoutine = null;
+
 
 		protected virtual void Awake()
 		{
@@ -35,37 +36,51 @@ namespace HMMKayliesTweaks.Buttons
 				StopCoroutine(timerRoutine);
 		}
 
-		/*
-		 this doesnt work atm
-		 if i have GorillaTriggerColliderHandIndicator hand = collider.GetComponentInParent<GorillaTriggerColliderHandIndicator>(); in fixedupdate the menu doesnt open at all and it throws a NullReferenceException
-		 if i dont it just inverts the status of every mod and breaks the buttons when opened
-		 i think i need to use fixedupdate + easyinput and ontriggerenter in tandem or something idrk that much c#
-		 this is very much wip dont laugh at me if my code sucks which it probably does lol
-		 */
 
 		private void OnTriggerEnter(Collider collider)
 		{
-			GorillaTriggerColliderHandIndicator hand = collider.GetComponentInParent<GorillaTriggerColliderHandIndicator>();
-			if (hand == null) 
+			if (triggered)
 				return;
-			handCollider = collider;
+
+			GorillaTriggerColliderHandIndicator hand = collider.GetComponentInParent<GorillaTriggerColliderHandIndicator>();
+			if (hand == null)
+				return;
+
+			float lhSpeed = leftHandTracker != null ? leftHandTracker.Speed : 0f;
+			float rhSpeed = rightHandTracker != null ? rightHandTracker.Speed : 0f;
+
+			bool canTrigger = lhSpeed < handSensitivity && rhSpeed < handSensitivity;
+
+			if (canTrigger && hand.isLeftHand != leftHand)
+			{
+				triggered = true;
+				handCollider = collider;
+				timerRoutine = StartCoroutine(Timer());
+                
+				GorillaTagger.Instance.StartVibration(hand.isLeftHand, GorillaTagger.Instance.tapHapticStrength / 2f, GorillaTagger.Instance.tapHapticDuration);
+				HandTriggered();
+			}
 		}
-		
-		void FixedUpdate()
+
+		private void FixedUpdate()
         {
 			EasyInput.UpdateInput();
 			if (EasyInput.FaceButtonX)
             {
-				if (triggered)
-					return;
+				if (triggered) return;
 				triggered = true;
-
-				timerRoutine = StartCoroutine(Timer());
-				HandTriggered();
+				timerRoutine = StartCoroutine(TimerOpen());
+				OpenMenu();
 			}
         }
-
 		private IEnumerator Timer()
+		{
+			yield return new WaitForSeconds(1.5f);
+			triggered = false;
+			timerRoutine = null;
+		}
+
+		private IEnumerator TimerOpen()
 		{
 			yield return new WaitForSeconds(0.5f);
 			triggered = false;
@@ -73,5 +88,6 @@ namespace HMMKayliesTweaks.Buttons
 		}
 
 		protected virtual void HandTriggered() { }
+		protected virtual void OpenMenu() { }
 	}
 }
