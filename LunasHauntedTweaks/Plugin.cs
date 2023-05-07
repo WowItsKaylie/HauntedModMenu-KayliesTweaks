@@ -22,7 +22,7 @@ namespace HMMLunasTweaks
 
 		private void Awake()
 		{
-			var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KayliesHauntedTweaks.Resources.font");
+			var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("LunasHauntedTweaks.Resources.font");
 			if (stream == null)
 				return;
 
