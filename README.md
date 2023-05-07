@@ -1,4 +1,4 @@
-# Kaylie's Haunted Tweaks
+# Luna's Haunted Tweaks
 A fork of Haunted with additions for ease of use.
 
 # Current Tweaks:
