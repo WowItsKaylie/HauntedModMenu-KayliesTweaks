@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-using HMMKayliesTweaks.Utils;
+using HMMLunasTweaks.Utils;
 
-namespace HMMKayliesTweaks.Menu
+namespace HMMLunasTweaks.Menu
 {
 	class MenuController : Buttons.HandTrigger
 	{

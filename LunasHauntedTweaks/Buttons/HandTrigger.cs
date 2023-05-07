@@ -2,7 +2,7 @@
 using UnityEngine;
 using HoneyLib.Utils;
 
-namespace HMMKayliesTweaks.Buttons
+namespace HMMLunasTweaks.Buttons
 {
 	internal class HandTrigger : MonoBehaviour
 	{

@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-using HMMKayliesTweaks.Utils;
+using HMMLunasTweaks.Utils;
 
-namespace HMMKayliesTweaks.Menu
+namespace HMMLunasTweaks.Menu
 {
 	class MenuView : MonoBehaviour
 	{
@@ -101,7 +101,7 @@ namespace HMMKayliesTweaks.Menu
 				rect.sizeDelta = new Vector2(1f, 1f);
 			}
 
-			string[,] textInfo = new string[,] { {"MenuTitle", "Kaylie's Tweaks" }, {"PageText", "Pages" } };
+			string[,] textInfo = new string[,] { {"MenuTitle", "Luna's Tweaks" }, {"PageText", "Pages" } };
 			Vector3[] positions = new Vector3[] { new Vector3(0f, 0.435f, -0.51f), new Vector3(0f, -0.4f, -0.51f) };
 
 			int loopIndex;

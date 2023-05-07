@@ -6,11 +6,11 @@ using System.Text;
 using BepInEx;
 using BepInEx.Configuration;
 
-namespace HMMKayliesTweaks.Utils
+namespace HMMLunasTweaks.Utils
 {
 	internal static class Config
 	{
-		public static ConfigFile File { get; private set; } = new ConfigFile(Path.Combine(Paths.ConfigPath, "HMMKayliesTweaks.cfg"), true);
+		public static ConfigFile File { get; private set; } = new ConfigFile(Path.Combine(Paths.ConfigPath, "HMMLunasTweaks.cfg"), true);
 
 		public static T LoadData<T>(string tag, string key, string description, T defaultValue)
 		{

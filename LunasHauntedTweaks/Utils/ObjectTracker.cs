@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace HMMKayliesTweaks.Utils
+namespace HMMLunasTweaks.Utils
 {
     // this could be usefull in the future
     public class ObjectTracker : MonoBehaviour

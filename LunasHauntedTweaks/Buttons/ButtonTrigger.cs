@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace HMMKayliesTweaks.Buttons
+namespace HMMLunasTweaks.Buttons
 {
 	class ButtonTrigger : HandTrigger
 	{

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HMMKayliesTweaks.Buttons
+namespace HMMLunasTweaks.Buttons
 {
 	class PageButtonTrigger : ButtonTrigger
 	{

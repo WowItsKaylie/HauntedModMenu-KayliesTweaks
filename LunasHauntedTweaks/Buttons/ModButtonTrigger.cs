@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace HMMKayliesTweaks.Buttons
+namespace HMMLunasTweaks.Buttons
 {
 	class ModButtonTrigger : ButtonTrigger
 	{

@@ -1,6 +1,6 @@
 ﻿using BepInEx;
 
-namespace HMMKayliesTweaks.Utils
+namespace HMMLunasTweaks.Utils
 {
 	public class ModInfo
 	{

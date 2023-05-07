@@ -10,7 +10,7 @@ using UnityEngine;
 
 using Utilla;
 
-namespace HMMKayliesTweaks
+namespace HMMLunasTweaks
 {
 	[ModdedGamemode]
 	[BepInDependency("org.legoandmars.gorillatag.utilla", "1.5.0")]

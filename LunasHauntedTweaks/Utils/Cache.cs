@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-namespace HMMKayliesTweaks.Utils
+namespace HMMLunasTweaks.Utils
 {
 	// static class to cache references
 	public static class RefCache
