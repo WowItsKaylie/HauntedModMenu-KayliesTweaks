@@ -2,13 +2,13 @@
 
 namespace HMMLunasTweaks.Buttons
 {
-	class PageButtonTrigger : ButtonTrigger
-	{
-		public Action PageUpdate { get; set; }
+    class PageButtonTrigger : ButtonTrigger
+    {
+        public Action PageUpdate { get; set; }
 
-		protected override void HandTriggered()
-		{
-			PageUpdate();
-		}
-	}
+        protected override void HandTriggered()
+        {
+            PageUpdate();
+        }
+    }
 }

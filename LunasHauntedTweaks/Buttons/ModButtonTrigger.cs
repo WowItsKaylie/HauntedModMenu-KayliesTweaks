@@ -1,31 +1,34 @@
-﻿using UnityEngine;
-
-namespace HMMLunasTweaks.Buttons
+﻿namespace HMMLunasTweaks.Buttons
 {
-	class ModButtonTrigger : ButtonTrigger
-	{
-		private Utils.ModInfo modTarget = null;
-		public Utils.ModInfo ModTarget { 
-			get => modTarget; 
-			set {
-				modTarget = value;
+    class ModButtonTrigger : ButtonTrigger
+    {
+        private Utils.ModInfo modTarget = null;
+        public Utils.ModInfo ModTarget
+        {
+            get => modTarget;
+            set
+            {
+                modTarget = value;
 
-				if (value != null) {
-					SetColour(value.Enabled);
-				
-				} else {
-					SetColour(false);
-				}
-			} 
-		}
+                if (value != null)
+                {
+                    SetColour(value.Enabled);
 
-		protected override void HandTriggered()
-		{
-			if (modTarget == null) return;
+                }
+                else
+                {
+                    SetColour(false);
+                }
+            }
+        }
 
-			bool toEnable = !modTarget.Enabled;
-			modTarget.Enabled = toEnable;
-			SetColour(toEnable);
-		}
-	}
+        protected override void HandTriggered()
+        {
+            if (modTarget == null) return;
+
+            bool toEnable = !modTarget.Enabled;
+            modTarget.Enabled = toEnable;
+            SetColour(toEnable);
+        }
+    }
 }
