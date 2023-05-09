@@ -1,10 +1,6 @@
-﻿using System.ComponentModel;
-using BepInEx;
-using UnityEngine;
-
-namespace HMMLunasTweaks
+﻿namespace HMMLunasTweaks
 {
-	/*
+    /*
 	[Description("HauntedModMenu")]
 	[BepInPlugin("com.HMM.testclass1", "test class1", "0.0.0")]
 	class TestPlugins1 : BaseUnityPlugin

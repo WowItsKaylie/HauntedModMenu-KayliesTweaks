@@ -10,16 +10,20 @@ namespace HMMLunasTweaks.Utils
         private Vector3 currentPositon = Vector3.zero;
         private Vector3 rawDirection = Vector3.zero;
 
-        public float Speed {
+        public float Speed
+        {
             get { return speed > 0f ? speed / Time.deltaTime : 0f; }
         }
 
         public virtual void OnEnable()
         {
-            if (RefCache.PlayerTransform != null) {
+            if (RefCache.PlayerTransform != null)
+            {
                 lastPosition = this.gameObject.transform.position - RefCache.PlayerTransform.position;
 
-            } else {
+            }
+            else
+            {
                 lastPosition = this.gameObject.transform.position;
             }
         }
@@ -35,10 +39,13 @@ namespace HMMLunasTweaks.Utils
         // late update so position changes in Update in other scripts are included
         public virtual void LateUpdate()
         {
-            if (RefCache.PlayerTransform != null) {
+            if (RefCache.PlayerTransform != null)
+            {
                 currentPositon = this.gameObject.transform.position - RefCache.PlayerTransform.position;
 
-            } else {
+            }
+            else
+            {
                 currentPositon = this.gameObject.transform.position;
             }
 

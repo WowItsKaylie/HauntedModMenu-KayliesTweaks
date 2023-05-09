@@ -1,126 +1,122 @@
-﻿using System;
-using System.Reflection;
-using System.ComponentModel;
-
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Bootstrap;
 using HarmonyLib;
-
+using HoneyLib.Utils;
+using System;
+using System.ComponentModel;
+using System.Reflection;
 using UnityEngine;
-
 using Utilla;
 
 namespace HMMLunasTweaks
 {
-	[ModdedGamemode]
-	[BepInDependency("org.legoandmars.gorillatag.utilla", "1.5.0")]
-	[BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
-	public class HauntedModMenuPlugin : BaseUnityPlugin
-	{
-		private bool inRoom;
-		private GameObject menuObject = null;
+    [ModdedGamemode]
+    [BepInDependency("org.legoandmars.gorillatag.utilla", "1.5.0")]
+    [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
+    public class HauntedModMenuPlugin : BaseUnityPlugin
+    {
+        private bool inRoom;
+        private GameObject menuObject = null;
 
-		private void Awake()
-		{
-			var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("LunasHauntedTweaks.Resources.font");
-			if (stream == null)
-				return;
+        private void Awake()
+        {
+            var fontBundle = EasyAssetLoading.LoadBundle(Assembly.GetExecutingAssembly(), "LunasHauntedTweaks.Resources.hmmlunastweaksfont");
+            if (fontBundle == null)
+                return;
 
-			var fontBundle = AssetBundle.LoadFromStream(stream);
-			if (fontBundle == null)
-				return;
+            Utils.RefCache.CustomFont = fontBundle.LoadAsset<Font>("BitCell");
+            fontBundle.Unload(false);
+        }
 
-			Utils.RefCache.CustomFont = fontBundle.LoadAsset<Font>("Monocraft");
+        private void Start()
+        {
+            foreach (BepInEx.PluginInfo plugin in Chainloader.PluginInfos.Values)
+            {
 
-			fontBundle.Unload(false);
-		}
+                BaseUnityPlugin modPlugin = plugin.Instance;
+                Type type = modPlugin.GetType();
+                DescriptionAttribute modDescription = type.GetCustomAttribute<DescriptionAttribute>();
 
-		private void Start()
-		{
-			foreach(BepInEx.PluginInfo plugin in Chainloader.PluginInfos.Values) {
+                if (modDescription == null)
+                    continue;
 
-				BaseUnityPlugin modPlugin = plugin.Instance;
-				Type type = modPlugin.GetType();
-				DescriptionAttribute modDescription = type.GetCustomAttribute<DescriptionAttribute>();
+                if (modDescription.Description.Contains("HauntedModMenu"))
+                {
+                    var enableImp = AccessTools.Method(type, "OnEnable");
+                    var disableImp = AccessTools.Method(type, "OnDisable");
 
-				if (modDescription == null)
-					continue;
+                    if (enableImp != null && disableImp != null)
+                        Utils.RefCache.ModList.Add(new Utils.ModInfo(modPlugin, plugin.Metadata.Name));
+                }
+            }
 
-				if (modDescription.Description.Contains("HauntedModMenu")) {
-					var enableImp = AccessTools.Method(type, "OnEnable");
-					var disableImp = AccessTools.Method(type, "OnDisable");
+            Utilla.Events.GameInitialized += OnGameInitialized;
+        }
 
-					if(enableImp != null && disableImp != null)
-						Utils.RefCache.ModList.Add(new Utils.ModInfo(modPlugin, plugin.Metadata.Name));
-				}
-			}
+        private void OnEnable()
+        {
+            if (menuObject != null && inRoom)
+                menuObject.SetActive(true);
+        }
 
-			Utilla.Events.GameInitialized += OnGameInitialized;
-		}
+        private void OnDisable()
+        {
+            if (menuObject != null)
+                menuObject.SetActive(false);
+        }
 
-		private void OnEnable()
-		{
-			if (menuObject != null && inRoom)
-				menuObject.SetActive(true);
-		}
+        private void OnGameInitialized(object sender, EventArgs e)
+        {
+            Utils.RefCache.LeftHandFollower = GorillaLocomotion.Player.Instance.leftHandFollower.gameObject;
+            Utils.RefCache.RightHandFollower = GorillaLocomotion.Player.Instance.rightHandFollower.gameObject;
+            Utils.RefCache.CameraTransform = GorillaLocomotion.Player.Instance.headCollider.transform;
+            Utils.RefCache.PlayerTransform = GorillaLocomotion.Player.Instance.turnParent.transform;
 
-		private void OnDisable()
-		{
-			if (menuObject != null)
-				menuObject.SetActive(false);
-		}
-
-		private void OnGameInitialized(object sender, EventArgs e)
-		{
-			Utils.RefCache.LeftHandFollower = GorillaLocomotion.Player.Instance.leftHandFollower.gameObject;
-			Utils.RefCache.RightHandFollower = GorillaLocomotion.Player.Instance.rightHandFollower.gameObject;
-			Utils.RefCache.CameraTransform = GorillaLocomotion.Player.Instance.headCollider.transform;
-			Utils.RefCache.PlayerTransform = GorillaLocomotion.Player.Instance.turnParent.transform;
-
-			Utils.RefCache.LeftHandRig = GorillaTagger.Instance.offlineVRRig.leftHandTransform.parent.gameObject;
+            Utils.RefCache.LeftHandRig = GorillaTagger.Instance.offlineVRRig.leftHandTransform.parent.gameObject;
             Utils.RefCache.RightHandRig = GorillaTagger.Instance.offlineVRRig.rightHandTransform.parent.gameObject;
         }
 
-		/* This attribute tells Utilla to call this method when a modded room is joined */
-		[ModdedGamemodeJoin]
-		public void OnJoin(string gamemode)
-		{
-			inRoom = true;
+        /* This attribute tells Utilla to call this method when a modded room is joined */
+        [ModdedGamemodeJoin]
+        public void OnJoin()
+        {
+            inRoom = true;
 
-			if (menuObject != null)
-				return;
+            if (menuObject != null)
+                return;
 
-			menuObject = CreateTrigger();
+            menuObject = CreateTrigger();
 
-			if (menuObject != null) {
-				menuObject.AddComponent<Menu.MenuController>();
-				menuObject.SetActive(this.enabled && this.inRoom);
-			}
-		}
+            if (menuObject != null)
+            {
+                menuObject.AddComponent<Menu.MenuController>();
+                menuObject.SetActive(enabled && inRoom);
+            }
+        }
 
-		/* This attribute tells Utilla to call this method when a modded room is left */
-		[ModdedGamemodeLeave]
-		public void OnLeave(string gamemode)
-		{
-			inRoom = false;
-			UnityEngine.Object.Destroy(menuObject);
-		}
+        /* This attribute tells Utilla to call this method when a modded room is left */
+        [ModdedGamemodeLeave]
+        public void OnLeave()
+        {
+            inRoom = false;
+            Destroy(menuObject);
+        }
 
-		private GameObject CreateTrigger()
-		{
-			GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-			if (go == null)
-				return null;
+        private GameObject CreateTrigger()
+        {
+            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            if (go == null)
+                return null;
 
-			Collider col = go.GetComponent<Collider>();
-			if (col != null)
-				col.isTrigger = true;
+            Collider col = go.GetComponent<Collider>();
+            if (col != null)
+                col.isTrigger = true;
 
-			MeshRenderer render = go.GetComponent<MeshRenderer>();
-			if (render != null)
-				UnityEngine.Object.Destroy(render);
+            MeshRenderer render = go.GetComponent<MeshRenderer>();
+            if (render != null)
+                Destroy(render);
 
-			return go;
-		}
-	}
+            return go;
+        }
+    }
 }
