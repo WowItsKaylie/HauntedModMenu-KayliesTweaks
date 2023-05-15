@@ -1,6 +1,9 @@
 # Luna's Haunted Tweaks
 A fork of Haunted with additions for ease of use.
 
+![image](https://github.com/lunakittyyy/LunasHauntedTweaks/assets/17483712/52361948-f922-4810-b7ff-d2a9d13d3b5a)
+
+
 # Current Tweaks:
 - New font
 - Header text changed
