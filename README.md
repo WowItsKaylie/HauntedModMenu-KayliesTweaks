@@ -1,6 +1,8 @@
 # Luna's Haunted Tweaks
 A fork of Haunted with additions for ease of use.
 
+![GitHub all releases](https://img.shields.io/github/downloads/lunakittyyy/LunasHauntedTweaks/total?style=plastic)
+
 ![image](https://github.com/lunakittyyy/LunasHauntedTweaks/assets/17483712/52361948-f922-4810-b7ff-d2a9d13d3b5a)
 
 
