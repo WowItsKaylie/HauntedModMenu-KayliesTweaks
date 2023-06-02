@@ -18,18 +18,16 @@ namespace HMMLunasTweaks
         private bool inRoom;
         private GameObject menuObject = null;
 
-        private void Awake()
+        private void Start()
         {
+            // usage of Awake() now locks the game up on boot so we need this to be in Start now :(
             var fontBundle = EasyAssetLoading.LoadBundle(Assembly.GetExecutingAssembly(), "LunasHauntedTweaks.Resources.hmmlunastweaksfont");
             if (fontBundle == null)
                 return;
 
             Utils.RefCache.CustomFont = fontBundle.LoadAsset<Font>("BitCell");
             fontBundle.Unload(false);
-        }
 
-        private void Start()
-        {
             foreach (BepInEx.PluginInfo plugin in Chainloader.PluginInfos.Values)
             {
 
