@@ -1,4 +1,4 @@
-﻿using BepInEx;
+using BepInEx;
 using BepInEx.Bootstrap;
 using HarmonyLib;
 using System;
@@ -17,10 +17,15 @@ namespace HMMLunasTweaks
         private bool inRoom;
         private GameObject menuObject = null;
 
+        private AssetBundle LoadFontBundle() {
+            var Stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("LunasHauntedTweaks.Resources.hmmlunastweaksfont");
+            return AssetBundle.LoadFromStream(Stream);
+        }
+
         private void Start()
         {
             // usage of Awake() now locks the game up on boot so we need this to be in Start now :(
-            var fontBundle = EasyAssetLoading.LoadBundle(Assembly.GetExecutingAssembly(), "LunasHauntedTweaks.Resources.hmmlunastweaksfont");
+            var fontBundle = LoadFontBundle();
             if (fontBundle == null)
                 return;
 
@@ -29,7 +34,6 @@ namespace HMMLunasTweaks
 
             foreach (BepInEx.PluginInfo plugin in Chainloader.PluginInfos.Values)
             {
-
                 BaseUnityPlugin modPlugin = plugin.Instance;
                 Type type = modPlugin.GetType();
                 DescriptionAttribute modDescription = type.GetCustomAttribute<DescriptionAttribute>();
