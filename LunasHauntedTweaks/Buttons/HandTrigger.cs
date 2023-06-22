@@ -1,6 +1,7 @@
-﻿using HoneyLib.Utils;
+
 using System.Collections;
 using UnityEngine;
+using UnityEngine.XR;
 
 namespace HMMLunasTweaks.Buttons
 {
@@ -64,8 +65,8 @@ namespace HMMLunasTweaks.Buttons
 
         private void LateUpdate() // FixedUpdate has to do with lighting/rendering or smth
         {
-            EasyInput.UpdateInput();
-            if (EasyInput.FaceButtonX)
+            InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.secondaryButton, out bool FaceButtonX);
+            if (FaceButtonX)
             {
                 if (triggered) return;
                 triggered = true;
