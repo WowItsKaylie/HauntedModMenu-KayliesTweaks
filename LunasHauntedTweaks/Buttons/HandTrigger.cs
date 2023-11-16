@@ -1,7 +1,5 @@
-
 using System.Collections;
 using UnityEngine;
-using UnityEngine.XR;
 
 namespace HMMLunasTweaks.Buttons
 {
@@ -63,10 +61,9 @@ namespace HMMLunasTweaks.Buttons
             }
         }
 
-        private void LateUpdate() // FixedUpdate has to do with lighting/rendering or smth
+        private void LateUpdate()
         {
-            InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.secondaryButton, out bool FaceButtonX);
-            if (FaceButtonX)
+            if (ControllerInputPoller.instance.leftControllerPrimaryButton)
             {
                 if (triggered) return;
                 triggered = true;

@@ -18,6 +18,7 @@ namespace HMMLunasTweaks
         private GameObject menuObject = null;
 
         private AssetBundle LoadFontBundle() {
+            // TODO: remake assetbundle
             var Stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("LunasHauntedTweaks.Resources.hmmlunastweaksfont");
             return AssetBundle.LoadFromStream(Stream);
         }
@@ -77,7 +78,12 @@ namespace HMMLunasTweaks
             Utils.RefCache.RightHandRig = GorillaTagger.Instance.offlineVRRig.rightHandTransform.parent.gameObject;
         }
 
-        /* This attribute tells Utilla to call this method when a modded room is joined */
+        /* TODO: consider unlocking for non modded rooms
+         * hmm only toggles mods which should have their own
+         * modded lobby restrictions anyway. This is a rather
+         * redundant restriction and people can turn it off
+         * at Computer Interface or whatever anyway
+        */
         [ModdedGamemodeJoin]
         public void OnJoin()
         {
@@ -95,7 +101,6 @@ namespace HMMLunasTweaks
             }
         }
 
-        /* This attribute tells Utilla to call this method when a modded room is left */
         [ModdedGamemodeLeave]
         public void OnLeave()
         {
